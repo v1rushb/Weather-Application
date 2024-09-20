@@ -4,7 +4,7 @@ namespace WeatherApp.Models {
     public class WeatherStateDTO {
 
         [Required]
-        public string Location { get; set; }
+        public string? Location { get; set; }
 
         [Required]
         public double Temperature { get; set; }
