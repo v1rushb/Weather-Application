@@ -7,5 +7,7 @@ namespace WeatherApp.InputDataParser.Strategies
     public class JSONDataParser : IInputParser 
     {
         public WeatherStateDTO? Parse(String input) => JsonConvert.DeserializeObject<WeatherStateDTO>(input);
+
+        public bool CanParse(string input) => input.TrimStart().StartsWith("{");
     }
 }

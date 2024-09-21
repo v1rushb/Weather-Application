@@ -12,5 +12,6 @@ namespace WeatherApp.InputDataParser.Strategies
             using var reader = new StringReader(input);
             return (WeatherStateDTO?) serializer.Deserialize(reader);
         }
+        public bool CanParse(string input) => input.TrimStart().StartsWith("<");
     }
 }
