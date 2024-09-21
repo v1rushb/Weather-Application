@@ -1,11 +1,14 @@
 using WeatherApp.InputDataParser.Strategies;
 using WeatherApp.Models;
+using WeatherApp.Services;
 using WeatherApp.Strategies;
 
 namespace WeatherApp.UserInterface {
     public class WeatherApplication {
+        private readonly BotManager _botManager = new();
         public void StartApplication() {
             while(true) {
+                Console.Clear();
                 repeatChoice:
                     Console.WriteLine("Weather Monitoring and Reporting Service");
                     Console.WriteLine("Enter Weather Sate using one of the following formates:");
@@ -14,6 +17,7 @@ namespace WeatherApp.UserInterface {
                     Console.WriteLine("Choose an option: ");
 
                     var choice = Console.ReadLine();
+                    Console.Clear();
 
                     var inputProcessStrategy = new WeatherStrategyContext();
                     switch(choice) 
@@ -25,6 +29,10 @@ namespace WeatherApp.UserInterface {
                                 string? userWeatherInput = ReadInputFromUser(inputProcessStrategy);
                                 try {
                                     var weatherData = inputProcessStrategy.WeatherDeserialize(userWeatherInput);
+                                    if(weatherData!= null)
+                                    {
+                                        _botManager.NotifyBots(weatherData);
+                                    }
                                 } catch (Exception ex) {
                                     Console.WriteLine($"Invalid Input format. {ex.Message}");
                                     goto repeatCase1;
@@ -38,6 +46,10 @@ namespace WeatherApp.UserInterface {
                                 string? userWeatherInput = ReadInputFromUser(inputProcessStrategy);
                                 try {
                                     var weatherData = inputProcessStrategy.WeatherDeserialize(userWeatherInput);
+                                    if(weatherData!= null)
+                                    {
+                                        _botManager.NotifyBots(weatherData);
+                                    }
                                 } catch(Exception ex) {
                                     Console.WriteLine($"Invalid input format. {ex.Message}");
                                     goto repeatCase2;
