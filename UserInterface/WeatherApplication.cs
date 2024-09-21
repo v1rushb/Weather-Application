@@ -1,5 +1,4 @@
 using WeatherApp.InputDataParser.Strategies;
-using WeatherApp.Models;
 using WeatherApp.Services;
 using WeatherApp.Strategies;
 
@@ -7,8 +6,8 @@ namespace WeatherApp.UserInterface {
     public class WeatherApplication {
         private readonly BotManager _botManager = new();
         public void StartApplication() {
+            Console.Clear();
             while(true) {
-                Console.Clear();
                 repeatChoice:
                     Console.WriteLine("Weather Monitoring and Reporting Service");
                     Console.WriteLine("Enter Weather Sate using one of the following formates:");
