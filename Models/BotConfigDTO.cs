@@ -1,5 +1,5 @@
 namespace WeatherApp.Models {
-    public class BotConfig {
+    public class BotConfigDTO {
         public bool IsEnabled { get; set; } = false;
 
         public double Threshold { get; set; }
