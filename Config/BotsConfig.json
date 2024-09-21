@@ -1,0 +1,18 @@
+{
+    "RainBot": {
+      "IsEnabled": true,
+      "Threshold": 70,
+      "Message": "Rain goes brrrrrrrrr"
+    },
+    "SunBot": {
+      "IsEnabled": true,
+      "Threshold": 30,
+      "Message": "hear goes brrrrrr"
+    },
+    "SnowBot": {
+      "IsEnabled": true,
+      "Threshold": 0,
+      "Message": "Brrr, too cold bruh"
+    }
+  }
+  
