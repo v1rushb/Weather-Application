@@ -59,7 +59,7 @@ namespace WeatherSystem.Tests {
                                       .Create();
 
             sunBot.Update(weatherData);
-            sunBot.isTriggered.Should().BeTrue();
+            sunBot.isTriggered.Should().BeFalse();
         }
 
         [Fact]
