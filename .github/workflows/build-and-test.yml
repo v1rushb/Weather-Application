@@ -5,40 +5,36 @@ on:
   pull_request:
     branches: [ main ]
     paths:
-    - '**.cs'
-    - '**.csproj'
+      - '**/*.cs'
+      - '**/*.csproj'
+
+env:
+  DOTNET_VERSION: 8.0
 
 jobs:
-  setup-version:
-    runs-on: ${{ matrix.operating-system }}
+  build-and-test:
+    name: build-and-test-${{matrix.os}}
+    runs-on: ${{matrix.os}}
     strategy:
-      fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macos-13]
-        dotnet-version: ['3.1', '5.0', '6.0', '7.0', '8.0']
+        os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v4
+      
+      - name: Setup .NET core
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
-          
-      - name: Cache NuGet packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
+          dotnet-version: 8.0
 
       - name: Install Dependencies
         run: dotnet restore
+        working-directory: Weather-Application
 
       - name: Build
         run: dotnet build --configuration Release --no-restore
+        working-directory: Weather-Application
 
       - name: Test
         run: dotnet test --no-restore --verbosity normal
+        working-directory: WeatherSystem.Tests
