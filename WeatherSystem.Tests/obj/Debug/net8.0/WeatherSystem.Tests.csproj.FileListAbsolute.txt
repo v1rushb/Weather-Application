@@ -108,3 +108,4 @@
 /home/v1rushb/Foothill/WeatherApplication/WeatherSystem.Tests/obj/Debug/net8.0/WeatherSystem.Tests.pdb
 /home/v1rushb/Foothill/WeatherApplication/WeatherSystem.Tests/obj/Debug/net8.0/WeatherSystem.Tests.genruntimeconfig.cache
 /home/v1rushb/Foothill/WeatherApplication/WeatherSystem.Tests/obj/Debug/net8.0/ref/WeatherSystem.Tests.dll
+/home/v1rushb/Foothill/WeatherApplication/WeatherSystem.Tests/obj/Debug/net8.0/WeatherSystem.Tests.sourcelink.json
