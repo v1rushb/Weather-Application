@@ -10,6 +10,8 @@ namespace WeatherApp.Services.Bots
         private double TemperatureThreshold { get; }
         private string? Message { get; }
 
+        public bool isTriggered { get; set; }
+
         public SunBot(BotConfigDTO config)
         {
             IsEnabled = config.IsEnabled;
@@ -22,7 +24,10 @@ namespace WeatherApp.Services.Bots
             if (data.Temperature > TemperatureThreshold)
             {
                 ActivateBot();
+                isTriggered = true;
+                return;
             }
+            isTriggered = false;
         }
 
         private void ActivateBot()
