@@ -10,6 +10,8 @@ namespace WeatherApp.Services.Bots
         private double HumidityThreshold { get; }
         private string? Message { get; }
 
+        public bool isTriggered {get; set; }
+
         public RainBot(BotConfigDTO config)
         {
             IsEnabled = config.IsEnabled;
@@ -22,7 +24,10 @@ namespace WeatherApp.Services.Bots
             if (data.Humidity >= HumidityThreshold)
             {
                 ActivateBot();
+                isTriggered = true;
+                return;
             }
+            isTriggered = false;
         }
 
         private void ActivateBot()
